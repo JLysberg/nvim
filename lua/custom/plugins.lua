@@ -1,5 +1,6 @@
 local plugins = {
-  { "ThePrimeagen/harpoon",
+  {
+    "ThePrimeagen/harpoon",
 
     dependencies = {
       "nvim-lua/plenary.nvim"
@@ -9,7 +10,16 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
-      return require "custom.configs.nvim-treesitter"
+      local opts = require "plugins.configs.treesitter"
+      local overrides = require "custom.configs.nvim-treesitter"
+
+      opts.ensure_installed = overrides.ensure_installed
+      opts.highlight = overrides.highlight
+      opts.indent = overrides.indent
+      opts.incremental_selection = overrides.incremental_selection
+      opts.textobjects = overrides.textobjects
+
+      return opts
     end,
   },
 
@@ -104,6 +114,7 @@ local plugins = {
         dotfiles = true
       },
       open_on_tab = true,
+      sync_root_with_cwd = false,
       git = {
         enable = true,
       },
@@ -122,6 +133,24 @@ local plugins = {
         }
       },
     },
+  },
+
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local opts = require "plugins.configs.cmp"
+      local overrides = require "custom.configs.cmp"
+
+      opts.completion = overrides.completion
+      opts.mapping = overrides.mapping
+
+      return opts
+    end,
   },
 }
 
