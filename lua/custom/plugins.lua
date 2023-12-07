@@ -64,14 +64,6 @@ local plugins = {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
-    opts = function()
-      return require "custom.configs.null-ls"
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
@@ -83,6 +75,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- lua
         "lua-language-server",
 
         -- python
@@ -91,13 +84,20 @@ local plugins = {
         "mypy",
         "ruff",
         "pyright",
+
+        -- csharp
+        "csharpier",
+        -- csharp-ls installed via dotnet
+
+        -- sql
+        "sql-formatter",
       },
     },
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
+    ft = {"python", "sql", "cs"},
     opts = function()
       return require "custom.configs.null-ls"
     end,
