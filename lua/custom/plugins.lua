@@ -91,13 +91,17 @@ local plugins = {
 
         -- sql
         "sql-formatter",
+
+        -- proto
+        "buf",
+        "buf-language-server",
       },
     },
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python", "sql", "cs"},
+    ft = {"python", "sql", "cs", "proto"},
     opts = function()
       return require "custom.configs.null-ls"
     end,

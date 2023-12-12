@@ -5,10 +5,14 @@ local opts = {
   sources = {
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.ruff,
+    null_ls.builtins.diagnostics.buf.with({
+      extra_args = { "--config", vim.fn.expand("~/.config/buf.yaml") },
+    }),
 
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.sql_formatter,
     null_ls.builtins.formatting.csharpier,
+    null_ls.builtins.formatting.buf,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

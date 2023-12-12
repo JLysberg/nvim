@@ -89,4 +89,30 @@ M.dap_python = {
   }
 }
 
+M.tabufline = {
+  n = {
+    -- close buffer/hide terminal buffer and close window
+    ["<leader>X"] = {
+      function()
+        require("nvchad.tabufline").close_buffer()
+        vim.cmd("q")
+      end,
+      "Close buffer and window",
+    },
+  }
+}
+
+M.lspconfig = {
+  plugin = true,
+
+  n = {
+    ["<leader>rn"] = {
+      function()
+        require("nvchad.renamer").open()
+      end,
+      "LSP rename",
+    },
+  },
+}
+
 return M

@@ -16,3 +16,9 @@ lspconfig.csharp_ls.setup({
   capabilities = capabilities,
   filetypes = {"cs"},
 })
+
+lspconfig.bufls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"proto"},
+})
