@@ -156,6 +156,18 @@ local plugins = {
       return opts
     end,
   },
+
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      plugins = {
+        options = {
+          enabled = true,
+          laststatus = 0, -- turn off the statusline in zen mode
+        },
+      },
+    }
+  }
 }
 
 return plugins

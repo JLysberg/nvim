@@ -72,6 +72,9 @@ M.windows = {
     -- create windows
     ["<leader>h"] = { "<cmd>split<cr><cmd>ter<cr>i", "Create horizontal terminal" },
     ["<leader>v"] = { "<cmd>vsplit<cr><cmd>ter<cr>i", "Create vertical terminal" },
+
+    -- toggle zen mode
+    ["<leader>z"] = { function() require("zen-mode").toggle() end, "Toggle zen mode" }
   },
 }
 
@@ -112,6 +115,18 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
+  },
+}
+
+M.nvimtree = {
+  plugin = true,
+
+  n = {
+    -- toggle
+    ["<leader>E"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    -- focus
+    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 

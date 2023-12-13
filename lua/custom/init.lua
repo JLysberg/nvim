@@ -3,8 +3,11 @@ vim.g.vscode_snippets_path = "your snippets path"
 vim.g.snipmate_snippets_path = "your snippets path"
 vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/lua_snippets"
 
+-- options
 vim.o.relativenumber = true
 vim.o.hlsearch = true
+
+---- autocmds
 
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -33,3 +36,12 @@ local function open_nvim_tree(data)
   require("nvim-tree.api").tree.open()
 end
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+-- hide unmodified buffers
+vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
+  callback = function()
+    vim.t.bufs = vim.tbl_filter(function(bufnr)
+      return vim.api.nvim_buf_get_option(bufnr, "modified")
+    end, vim.t.bufs)
+  end,
+})
