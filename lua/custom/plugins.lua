@@ -90,18 +90,22 @@ local plugins = {
         -- csharp-ls installed via dotnet
 
         -- sql
-        "sql-formatter",
+        "sqlfluff",
+        -- "sql-formatter",
 
         -- proto
         "buf",
         "buf-language-server",
+
+        -- terraform
+        "terraform-ls"
       },
     },
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python", "sql", "cs", "proto"},
+    ft = {"python", "sql", "cs", "proto", "terraform", "terraform-vars"},
     opts = function()
       return require "custom.configs.null-ls"
     end,

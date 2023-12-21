@@ -115,6 +115,13 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
+
+    ["gr"] = {
+      function()
+        require("telescope.builtin").lsp_references()
+      end,
+      "LSP references",
+    },
   },
 }
 
