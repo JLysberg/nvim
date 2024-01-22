@@ -14,6 +14,7 @@ local opts = {
     null_ls.builtins.diagnostics.sqlfluff.with({
       extra_args = { "--dialect", "bigquery" },
     }),
+    null_ls.builtins.diagnostics.eslint,
 
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.sqlfluff.with({
@@ -22,6 +23,7 @@ local opts = {
     null_ls.builtins.formatting.csharpier,
     null_ls.builtins.formatting.buf,
     null_ls.builtins.formatting.terraform_fmt,
+    null_ls.builtins.formatting.prettier,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

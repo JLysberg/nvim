@@ -47,6 +47,7 @@ local plugins = {
     config = function(_, opts)
       require('dap').defaults.fallback.exception_breakpoints = {'raised', 'uncaught'}
       require("core.utils").load_mappings("dap")
+      require "custom.configs.dap"
     end
   },
 
@@ -99,14 +100,29 @@ local plugins = {
         "buf-language-server",
 
         -- terraform
-        "terraform-ls"
+        "terraform-ls",
+
+        -- typescript
+        "typescript-language-server",
+        "eslint-lsp",
+        "prettier",
+        "js-debug-adapter"
       },
     },
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python", "sql", "cs", "proto", "terraform", "terraform-vars"},
+    ft = {
+      "python",
+      "sql",
+      "cs",
+      "proto",
+      "terraform",
+      "terraform-vars",
+      "typescript",
+      "javascript"
+    },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -172,7 +188,7 @@ local plugins = {
         },
       },
     }
-  }
+  },
 }
 
 return plugins

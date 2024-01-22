@@ -91,6 +91,8 @@ M.dap = {
     ["<F7>"] = { function() require('dap').step_into() end, "Step into" },
     ["<F8>"] = { function() require('dap').step_out() end, "Step out" },
     ["<leader>dc"] = { function() require('dap').terminate() end, "Terminate" },
+    ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Toggle breakpoint" },
+    ["<leader>dr"] = { "<cmd> DapContinue <CR>", "Run or continue debugger" },
   }
 }
 
