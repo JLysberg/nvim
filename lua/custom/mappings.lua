@@ -3,11 +3,15 @@ local M = {}
 
 M.general = {
   n = {
-    -- primeagen motions
+    -- vertical motions
     ["<C-d>"] = { "<C-d>zz", "Move half screen down and center" },
     ["<C-u>"] = { "<C-u>zz", "Have half screen up and center" },
     ["n"] = { "nzzzv", "Move to next match and center" },
     ["N"] = { "Nzzzv", "Hove to previous match and center" },
+    ["{"] = { "{zz", "Move to next paragraph and center" },
+    ["}"] = { "}zz", "Hove to previous paragraph and center" },
+    ["#"] = { "#zz", "Move to next word under cursor and center" },
+    ["*"] = { "*zz", "Hove to previous word under cursor and center" },
 
     -- yank to clipboard
     ["<leader>y"] = { "\"+y", "Yank to clipboard" },
@@ -81,7 +85,12 @@ M.windows = {
 M.dap = {
   plugin = true,
   n = {
-    ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "Toggle breakpoint"}
+    ["<F9>"] = {function() require('dap').toggle_breakpoint() end, "Toggle breakpoint"},
+    ["<F5>"] = { function() require('dap').continue() end, "Continue" },
+    ["<F10>"] = { function() require('dap').step_over() end, "Step over" },
+    ["<F7>"] = { function() require('dap').step_into() end, "Step into" },
+    ["<F8>"] = { function() require('dap').step_out() end, "Step out" },
+    ["<leader>dc"] = { function() require('dap').terminate() end, "Terminate" },
   }
 }
 

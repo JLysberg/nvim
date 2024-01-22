@@ -45,6 +45,7 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     config = function(_, opts)
+      require('dap').defaults.fallback.exception_breakpoints = {'raised', 'uncaught'}
       require("core.utils").load_mappings("dap")
     end
   },
