@@ -26,4 +26,9 @@ return {
     "nvim-tree/nvim-tree.lua",
     opts = require "configs.nvimtree",
   },
+
+  {
+    "hrsh7th/nvim-cmp",
+    opts = require "configs.cmp",
+  },
 }
