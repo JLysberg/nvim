@@ -12,15 +12,12 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "configs.nvimtreesitter",
   },
 
-  ------------ non-defaults ------------
+  ------------ non-default reconfigurations ------------
 
   {
     "nvim-tree/nvim-tree.lua",
@@ -30,5 +27,12 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = require "configs.cmp",
+  },
+
+  ------------ custom plugins ------------
+
+  {
+    "folke/zen-mode.nvim",
+    opts = require "configs.zenmode",
   },
 }

@@ -40,8 +40,10 @@ map("n", "+", "<cmd>horizontal resize +2<cr>", { desc = "Increase window size ho
 map("n", "_", "<cmd>horizontal resize -2<cr>", { desc = "Decrease window size horizontally" })
 map("n", "<leader>h", "<cmd>split<cr><cmd>ter<cr>i", { desc = "Create horizontal terminal" })
 map("n", "<leader>v", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical terminal" })
--- ["<leader>z"] = { function() require("zen-mode").toggle() end, "Toggle zen mode" }
---
+map("n", "<leader>z", function()
+  require("zen-mode").toggle()
+end, { desc = "Toggle zen mode" })
+
 -- harpoon
 -- map("n", "<C-m>", require("harpoon"):list():add(), { desc = "HARPOON Append file to Harpoon list" })
 -- map("n", "<C-e>", require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()), { desc = "HARPOON Toggle Harpoon UI"  })
