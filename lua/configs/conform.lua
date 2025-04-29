@@ -2,6 +2,7 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     terraform = { "terraform_fmt" },
+    cs = { "csharpier" },
   },
 
   format_on_save = {
