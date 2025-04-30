@@ -22,7 +22,7 @@ M.nvdash = { load_on_startup = true }
 --}
 
 M.term = {
-  sizes = { vsp = 0.3 },
+  sizes = { vsp = 0.4 },
   float = {
     row = 0.15, -- slightly less than (1-height)/2
     col = 0.15, -- (1-width)/2
