@@ -30,10 +30,10 @@ map("n", "<leader>yf", '<cmd> call setreg("+",@%) <cr>', { desc = "Yank file nam
 map("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 -- window
-map({ "n", "t" }, "<C-Left>", "<C-w>h", { desc = "Switch to left window" })
-map({ "n", "t" }, "<C-Right>", "<C-w>l", { desc = "Switch to right window" })
-map({ "n", "t" }, "<C-Down>", "<C-w>j", { desc = "Switch to window below" })
-map({ "n", "t" }, "<C-Up>", "<C-w>k", { desc = "Switch to window above" })
+map("n", "<C-Left>", "<C-w>h", { desc = "Switch to left window" })
+map("n", "<C-Right>", "<C-w>l", { desc = "Switch to right window" })
+map("n", "<C-Down>", "<C-w>j", { desc = "Switch to window below" })
+map("n", "<C-Up>", "<C-w>k", { desc = "Switch to window above" })
 map("n", "=", "<cmd>vertical resize +5<cr>", { desc = "Increase window size vertically" })
 map("n", "-", "<cmd>vertical resize -5<cr>", { desc = "Decrease window size vertically" })
 map("n", "+", "<cmd>horizontal resize +2<cr>", { desc = "Increase window size horizontally" })
