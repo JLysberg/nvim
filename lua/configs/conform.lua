@@ -5,8 +5,15 @@ local options = {
     cs = { "csharpier" },
   },
 
+  formatters = {
+    -- fix until https://github.com/stevearc/conform.nvim/pull/695 is merged
+    csharpier = {
+      command = "csharpier",
+      args = { "format" },
+    },
+  },
+
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
