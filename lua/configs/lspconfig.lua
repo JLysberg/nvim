@@ -3,6 +3,19 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = {
   terraformls = {},
   csharpier = {},
+  ruff = {
+    logLevel = "info",
+  },
+  pyright = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { "*" },
+      },
+    },
+  },
   omnisharp = {
     cmd = {
       "omnisharp",

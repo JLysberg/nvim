@@ -3,6 +3,7 @@ local options = {
     lua = { "stylua" },
     terraform = { "terraform_fmt" },
     cs = { "csharpier" },
+    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
   },
 
   formatters = {
