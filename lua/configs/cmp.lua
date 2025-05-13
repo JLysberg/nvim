@@ -23,7 +23,11 @@ local options = {
       end
     end),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    -- disable completion with tab to not interfere with copilot
+    ["<Tab>"] = vim.NIL,
+    ["<S-Tab>"] = vim.NIL,
+
+    ["<Down>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         if #cmp.get_entries() == 1 then
           cmp.confirm { select = true }
@@ -42,7 +46,7 @@ local options = {
       end
     end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<Up>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.locally_jumpable(-1) then
