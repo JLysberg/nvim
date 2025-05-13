@@ -1,6 +1,12 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
+    css = { "prettierd" },
+    html = { "prettierd" },
+    javascript = { "prettierd" },
+    typescript = { "prettierd" },
+    svelte = { "prettierd" },
+    json = { "prettierd" },
     terraform = { "terraform_fmt" },
     cs = { "csharpier" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
