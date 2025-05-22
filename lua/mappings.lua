@@ -4,7 +4,7 @@ local map = vim.keymap.set
 local nomap = vim.keymap.del
 
 -- cmd
-map("n", ";", ":", { desc = "Enter command mode" })
+-- map("n", ";", ":", { desc = "Enter command mode" })
 
 -- term
 map("t", "<esc>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })

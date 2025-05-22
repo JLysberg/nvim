@@ -1,4 +1,6 @@
 return {
+  ------------ default reconfigurations ------------
+
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",
@@ -36,25 +38,7 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "css-lsp",
-        "html-lsp",
-        "prettierd",
-        "eslint_d",
-        "prisma-language-server",
-        "stylua",
-        "svelte-language-server",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "csharpier",
-        "omnisharp",
-        "terraform-ls",
-        "ruff",
-        "pyright",
-      },
-    },
+    opts = require "configs.mason",
   },
 
   ------------ custom plugins ------------
@@ -62,5 +46,17 @@ return {
   {
     "folke/zen-mode.nvim",
     opts = require "configs.zenmode",
+  },
+
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = require "configs.hardtime",
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
   },
 }

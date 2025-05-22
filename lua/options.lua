@@ -4,6 +4,8 @@ require "nvchad.options"
 
 local o = vim.o
 -- o.cursorlineopt ='both'
-o.cursorlineopt ='number'
+o.cursorlineopt = "number"
 
 o.relativenumber = true
+
+vim.notify = require "notify"
