@@ -16,6 +16,7 @@ local options = {
       "terraform-ls",
       "ruff",
       "pyright",
+      "buf",
     },
   },
 }
