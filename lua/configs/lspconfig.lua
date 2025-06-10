@@ -3,16 +3,16 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = {
   terraformls = {},
   csharpier = {},
-  ruff = {
-    logLevel = "info",
-  },
+  ruff = {},
   pyright = {
-    pyright = {
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        ignore = { "*" },
+    settings = {
+      pyright = {
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          ignore = { "*" },
+        },
       },
     },
   },
@@ -60,32 +60,36 @@ local servers = {
   prismals = {
     filetypes = { "prisma" },
   },
+  svelte = {
+    on_attach = function(client, bufnr)
+      if client.name == "svelte" then
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts", "*.svelte" },
+          callback = function(ctx)
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+          end,
+        })
+      end
+      if vim.bo[bufnr].filetype == "svelte" then
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts", "*.svelte" },
+          callback = function(ctx)
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+          end,
+        })
+      end
+
+      vim.api.nvim_buf_create_user_command(bufnr, "LspMigrateToSvelte5", function()
+        client:exec_cmd {
+          command = "migrate_to_svelte_5",
+          arguments = { vim.uri_from_bufnr(bufnr) },
+        }
+      end, { desc = "Migrate Component to Svelte 5 Syntax" })
+    end,
+  },
 }
 
 for name, opts in pairs(servers) do
   vim.lsp.enable(name)
   vim.lsp.config(name, opts)
 end
-
--- require("lspconfig").svelte.setup {
---   filetypes = { "svelte" },
---   on_attach = function(client, bufnr)
---     if client.name == "svelte" then
---       vim.api.nvim_create_autocmd("BufWritePost", {
---         pattern = { "*.js", "*.ts", "*.svelte" },
---         callback = function(ctx)
---           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
---         end,
---       })
---     end
---     if vim.bo[bufnr].filetype == "svelte" then
---       vim.api.nvim_create_autocmd("BufWritePost", {
---         pattern = { "*.js", "*.ts", "*.svelte" },
---         callback = function(ctx)
---           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
---         end,
---       })
---     end
---   end,
---   capabilities = nvlsp.capabilities,
--- }
