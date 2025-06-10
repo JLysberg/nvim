@@ -9,19 +9,20 @@ autocmd("TextYankPost", {
 })
 
 -- change cwd on vim enter
-local function open_nvim_tree(data)
-  -- return if buffer is not a directory
-  local directory = vim.fn.isdirectory(data.file) == 1
-  if not directory then
-    return
-  end
+autocmd("VimEnter", {
+  callback = function(data)
+    -- return if buffer is not a directory
+    local directory = vim.fn.isdirectory(data.file) == 1
+    if not directory then
+      return
+    end
 
-  -- change directory
-  vim.cmd.cd(data.file)
-end
-autocmd("VimEnter", { callback = open_nvim_tree })
+    -- change directory
+    vim.cmd.cd(data.file)
+  end,
+})
 
--- hide unmodified buffers
+-- hide unmodified buffers from tabufline
 autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
   callback = function()
     vim.t.bufs = vim.tbl_filter(function(bufnr)
@@ -30,8 +31,20 @@ autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
   end,
 })
 
--- fix file type of .env files
+-- fix file type of .env files for treesitter
 autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { ".env", ".env.*" },
   command = "set filetype=conf",
+})
+
+-- set options for terminal buffers
+autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.relativenumber = true
+    vim.opt_local.number = true
+
+    -- start in insert mode on open
+    vim.cmd "startinsert"
+  end,
 })
