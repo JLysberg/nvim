@@ -1,5 +1,11 @@
 require("nvchad.configs.lspconfig").defaults()
 
+local mason_bin = vim.fn.stdpath "data" .. "/mason/bin/"
+local omnisharp_cmd = vim.fn.exepath "OmniSharp"
+if omnisharp_cmd == "" then
+  omnisharp_cmd = mason_bin .. "OmniSharp"
+end
+
 local servers = {
   terraformls = {},
   csharpier = {},
@@ -18,7 +24,7 @@ local servers = {
   },
   omnisharp = {
     cmd = {
-      "omnisharp",
+      omnisharp_cmd,
       "-z",
       "--languageserver",
       "DotNet:enablePackageRestore=false",
@@ -90,6 +96,6 @@ local servers = {
 }
 
 for name, opts in pairs(servers) do
-  vim.lsp.enable(name)
   vim.lsp.config(name, opts)
+  vim.lsp.enable(name)
 end
