@@ -44,6 +44,18 @@ return {
   ------------ custom plugins ------------
 
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function(_, opts)
+      require("configs.harpoon").setup(opts)
+    end,
+    opts = function()
+      return require("configs.harpoon").opts
+    end,
+  },
+
+  {
     "folke/zen-mode.nvim",
     opts = require "configs.zenmode",
   },

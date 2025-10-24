@@ -3,6 +3,14 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
+local function get_harpoon()
+  return require "harpoon"
+end
+
+local function harpoon_list()
+  return get_harpoon():list()
+end
+
 -- cmd
 -- map("n", ";", ":", { desc = "Enter command mode" })
 
@@ -39,19 +47,39 @@ map("n", "=", "<cmd>vertical resize +5<cr>", { desc = "Increase window size vert
 map("n", "-", "<cmd>vertical resize -5<cr>", { desc = "Decrease window size vertically" })
 map("n", "+", "<cmd>horizontal resize +2<cr>", { desc = "Increase window size horizontally" })
 map("n", "_", "<cmd>horizontal resize -2<cr>", { desc = "Decrease window size horizontally" })
-map("n", "<leader>h", "<cmd>split<cr><cmd>ter<cr>i", { desc = "Create horizontal terminal" })
-map("n", "<leader>v", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical terminal" })
+map("n", "<leader>th", "<cmd>split<cr><cmd>ter<cr>i", { desc = "Create horizontal terminal" })
+map("n", "<leader>tv", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical terminal" })
 map("n", "<leader>z", function()
   require("zen-mode").toggle()
 end, { desc = "Toggle zen mode" })
 
 -- harpoon
--- map("n", "<C-m>", require("harpoon"):list():add(), { desc = "HARPOON Append file to Harpoon list" })
--- map("n", "<C-e>", require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()), { desc = "HARPOON Toggle Harpoon UI"  })
--- map("n", "<C-h>", require("harpoon"):list():select(1), { desc = "HARPOON Select first Harpoon file"  })
--- map("n", "<C-t>", require("harpoon"):list():select(2), { desc = "HARPOON Select second Harpoon file" })
--- map("n", "<C-n>", require("harpoon"):list():select(3), { desc = "HARPOON Select third Harpoon file"  })
--- map("n", "<C-s>", require("harpoon"):list():select(4), { desc = "HARPOON Select fourth Harpoon file"  })
+-- map("n", "<leader>ha", function()
+map("n", "<C-S>", function()
+  harpoon_list():add()
+end, { desc = "Harpoon add file" })
+
+-- map("n", "<leader>hh", function()
+map("n", "<C-N>", function()
+  get_harpoon().ui:toggle_quick_menu(harpoon_list())
+end, { desc = "Harpoon quick menu" })
+
+-- map("n", "<leader>hp", function()
+map("n", "<C-H>", function()
+  harpoon_list():prev()
+end, { desc = "Harpoon previous entry" })
+
+-- map("n", "<leader>hn", function()
+map("n", "<C-T>", function()
+  harpoon_list():next()
+end, { desc = "Harpoon next entry" })
+
+-- for idx = 1, 4 do
+--   -- map("n", string.format("<leader>h%d", idx), function()
+--   map("n", string.format("<C-N>%d", idx), function()
+--     harpoon_list():select(idx)
+--   end, { desc = string.format("Harpoon select slot %d", idx) })
+-- end
 
 -- lsp
 map("n", "[d", function()
