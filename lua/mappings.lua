@@ -11,11 +11,42 @@ local function harpoon_list()
   return get_harpoon():list()
 end
 
--- cmd
--- map("n", ";", ":", { desc = "Enter command mode" })
+-- helper for floating terminals with custom cmd and id, with title
+local function float_term(id, cmd)
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = id,
+    cmd = cmd,
+    float_opts = {
+      title = "  " .. id,
+      title_pos = "center",
+    },
+  }
+end
 
 -- term
-map("t", "<esc>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
+map(
+  "t",
+  "<leader><esc>",
+  vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
+  { desc = "Escape terminal mode" }
+)
+
+-- default floating terminal
+map({ "n", "t" }, "<A-i>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "Toggle default floating terminal" })
+
+-- three alternate floating terminals
+map({ "n", "t" }, "<A-g>", function()
+  float_term("Codex G", "codex")
+end, { desc = "Toggle first codex terminal" })
+map({ "n", "t" }, "<A-c>", function()
+  float_term("Codex C", "codex")
+end, { desc = "Toggle second codex terminal" })
+map({ "n", "t" }, "<A-r>", function()
+  float_term "Float R"
+end, { desc = "Toggle alt float terminal" })
 
 -- general
 map("n", "<C-q>", function()
@@ -47,8 +78,8 @@ map("n", "=", "<cmd>vertical resize +5<cr>", { desc = "Increase window size vert
 map("n", "-", "<cmd>vertical resize -5<cr>", { desc = "Decrease window size vertically" })
 map("n", "+", "<cmd>horizontal resize +2<cr>", { desc = "Increase window size horizontally" })
 map("n", "_", "<cmd>horizontal resize -2<cr>", { desc = "Decrease window size horizontally" })
-map("n", "<leader>th", "<cmd>split<cr><cmd>ter<cr>i", { desc = "Create horizontal terminal" })
-map("n", "<leader>tv", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical terminal" })
+map("n", "<leader>h", "<cmd>split<cr><cmd>ter<cr>i", { desc = "Create horizontal terminal" })
+map("n", "<leader>v", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical terminal" })
 map("n", "<leader>z", function()
   require("zen-mode").toggle()
 end, { desc = "Toggle zen mode" })
