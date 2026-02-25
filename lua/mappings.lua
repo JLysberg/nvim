@@ -83,6 +83,7 @@ map("n", "<leader>v", "<cmd>vsplit<cr><cmd>ter<cr>i", { desc = "Create vertical 
 map("n", "<leader>z", function()
   require("zen-mode").toggle()
 end, { desc = "Toggle zen mode" })
+map("n", "<leader>tc", "<cmd>TSContext Toggle<cr>", { desc = "Toggle treesitter context" })
 
 -- harpoon
 -- map("n", "<leader>ha", function()

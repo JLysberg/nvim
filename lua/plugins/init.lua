@@ -19,6 +19,12 @@ return {
     opts = require "configs.nvimtreesitter",
   },
 
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    opts = require "configs.treesitter_context",
+    lazy = false,
+  },
+
   ------------ non-default reconfigurations ------------
 
   {
