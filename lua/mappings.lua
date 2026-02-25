@@ -27,7 +27,7 @@ end
 -- term
 map(
   "t",
-  "<leader><esc>",
+  "<esc><esc>",
   vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
   { desc = "Escape terminal mode" }
 )
