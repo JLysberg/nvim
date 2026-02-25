@@ -7,7 +7,7 @@ local options = {
   trim_scope = "outer",
   mode = "cursor",
   separator = nil,
-  zindex = 20,
+  zindex = 45,
   on_attach = nil,
 }
 
