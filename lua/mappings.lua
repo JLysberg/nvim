@@ -55,6 +55,8 @@ map("n", "<C-q>", function()
 end, { desc = "Close buffer and window" })
 map("n", "n", "nzz", { desc = "Next match and center" })
 map("n", "N", "Nzz", { desc = "Prev match and center" })
+map("n", "<C-y>", "<C-y>k", { desc = "Scroll screen and cursor one line up" })
+map("n", "<C-e>", "<C-e>j", { desc = "Scroll screen and cursor one line down" })
 
 map(
   "n",
