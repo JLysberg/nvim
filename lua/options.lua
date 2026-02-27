@@ -1,7 +1,6 @@
 require "nvchad.options"
 
 -- add yours here!
-
 local o = vim.o
 -- o.cursorlineopt ='both'
 o.cursorlineopt = "number"
@@ -9,6 +8,11 @@ o.cursorlineopt = "number"
 o.relativenumber = true
 
 vim.notify = require "notify"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
 
 -- Ensure .NET apphosts can locate the system runtime when Neovim is started from an environment that lacks DOTNET_ROOT.
 local dotnet_root = "/usr/share/dotnet"
