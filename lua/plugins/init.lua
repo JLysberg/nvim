@@ -78,10 +78,4 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
   },
-
-  {
-    "sunjon/shade.nvim",
-    event = "VeryLazy",
-    opts = require "configs.shade",
-  },
 }
