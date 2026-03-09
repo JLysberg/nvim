@@ -87,4 +87,15 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
   },
+
+  {
+    "obsidian-nvim/obsidian.nvim",
+    version = "*",
+    ft = "markdown",
+    cmd = "Obsidian",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = require "configs.obsidian",
+  },
 }

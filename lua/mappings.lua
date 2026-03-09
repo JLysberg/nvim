@@ -146,6 +146,16 @@ map("n", "<leader>fd", "<cmd> Telescope lsp_definitions <cr>", { desc = "Telesco
 map("n", "<leader>fr", "<cmd> Telescope lsp_references <cr>", { desc = "Telescope lsp references" })
 map("n", "<leader>fD", "<cmd> Telescope diagnostics <cr>", { desc = "Telescope diagnostics" })
 
+-- obsidian
+map("n", "<leader>oo", "<cmd>Obsidian quick_switch<cr>", { desc = "Obsidian quick switch" })
+map("n", "<leader>os", "<cmd>Obsidian search<cr>", { desc = "Obsidian search" })
+map("n", "<leader>ot", "<cmd>Obsidian today<cr>", { desc = "Open today's Obsidian note" })
+map("n", "<leader>on", "<cmd>Obsidian new<cr>", { desc = "Create a new Obsidian note" })
+map("n", "<leader>ob", "<cmd>Obsidian backlinks<cr>", { desc = "Show Obsidian backlinks" })
+map("n", "<leader>op", "<cmd>Obsidian paste_img<cr>", { desc = "Paste image into Obsidian note" })
+map("n", "<leader>ol", "<cmd>Obsidian link<cr>", { desc = "Link selected text in Obsidian" })
+map("v", "<leader>ol", "<cmd>Obsidian link<cr>", { desc = "Link selected text in Obsidian" })
+
 -- git
 map("n", "<leader>gb", function()
   require("gitsigns").blame_line()
