@@ -6,6 +6,7 @@ local o = vim.o
 o.cursorlineopt = "number"
 
 o.relativenumber = true
+vim.opt.conceallevel = 1
 
 vim.notify = require "notify"
 

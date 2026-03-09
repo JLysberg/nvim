@@ -42,6 +42,9 @@ local opts = {
     folder = "assets/imgs",
   },
   open_notes_in = "current",
+  checkbox = {
+    order = { " ", "x", ">", "~" },
+  },
 }
 
 return opts
