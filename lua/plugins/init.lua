@@ -67,6 +67,15 @@ return {
   },
 
   {
+    "tadaa/vimade",
+    lazy = false,
+    opts = require "configs.vimade",
+    config = function(_, opts)
+      require("vimade").setup(opts)
+    end,
+  },
+
+  {
     "m4xshen/hardtime.nvim",
     enabled = false,
     lazy = false,
