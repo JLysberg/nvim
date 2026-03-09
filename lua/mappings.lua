@@ -20,6 +20,10 @@ local function float_term(id, cmd)
     float_opts = {
       title = "  " .. id,
       title_pos = "center",
+      row = 0.05,
+      col = 0.05,
+      height = 0.8,
+      width = 0.9,
     },
   }
 end
