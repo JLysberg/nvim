@@ -51,6 +51,9 @@ end, { desc = "Toggle second codex terminal" })
 map({ "n", "t" }, "<A-r>", function()
   float_term "Float R"
 end, { desc = "Toggle alt float terminal" })
+map({ "n", "t" }, "<A-t>", function()
+  require("configs.daily_note_pane").toggle()
+end, { desc = "Toggle persistent daily note pane" })
 
 -- general
 map("n", "<C-q>", function()
