@@ -41,15 +41,15 @@ map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Toggle default floating terminal" })
 
--- three alternate floating terminals
+-- three alternate floating terminals for agents
 map({ "n", "t" }, "<A-g>", function()
-  float_term("Codex G", "codex")
+  float_term "Agent G"
 end, { desc = "Toggle first codex terminal" })
 map({ "n", "t" }, "<A-c>", function()
-  float_term("Codex C", "codex")
+  float_term "Agent C"
 end, { desc = "Toggle second codex terminal" })
 map({ "n", "t" }, "<A-r>", function()
-  float_term "Float R"
+  float_term "Agent R"
 end, { desc = "Toggle alt float terminal" })
 map({ "n", "t" }, "<A-t>", function()
   require("configs.daily_note_pane").toggle()
@@ -152,12 +152,13 @@ map("n", "<leader>fD", "<cmd> Telescope diagnostics <cr>", { desc = "Telescope d
 -- obsidian
 map("n", "<leader>oo", "<cmd>Obsidian quick_switch<cr>", { desc = "Obsidian quick switch" })
 map("n", "<leader>os", "<cmd>Obsidian search<cr>", { desc = "Obsidian search" })
-map("n", "<leader>ot", "<cmd>Obsidian today<cr>", { desc = "Open today's Obsidian note" })
+map("n", "<leader>od", "<cmd>Obsidian today<cr>", { desc = "Open today's Obsidian daily note" })
 map("n", "<leader>on", "<cmd>Obsidian new<cr>", { desc = "Create a new Obsidian note" })
 map("n", "<leader>ob", "<cmd>Obsidian backlinks<cr>", { desc = "Show Obsidian backlinks" })
-map("n", "<leader>op", "<cmd>Obsidian paste_img<cr>", { desc = "Paste image into Obsidian note" })
 map("n", "<leader>ol", "<cmd>Obsidian link<cr>", { desc = "Link selected text in Obsidian" })
 map("v", "<leader>ol", "<cmd>Obsidian link<cr>", { desc = "Link selected text in Obsidian" })
+map("n", "<leader>ot", "<cmd>Obsidian template<cr>", { desc = "Insert Obsidian template" })
+map("n", "<leader>or", "<cmd>Obsidian rename<cr>", { desc = "Rename current Obsidian note" })
 
 -- git
 map("n", "<leader>gb", function()
