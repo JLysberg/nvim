@@ -45,6 +45,9 @@ local opts = {
   checkbox = {
     order = { " ", "x", ">", "~" },
   },
+  footer = {
+    enabled = false,
+  },
 }
 
 return opts
