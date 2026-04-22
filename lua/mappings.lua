@@ -152,8 +152,7 @@ map("n", "<leader>fD", "<cmd> Telescope diagnostics <cr>", { desc = "Telescope d
 -- obsidian
 map("n", "<leader>oo", "<cmd>Obsidian quick_switch<cr>", { desc = "Obsidian quick switch" })
 map("n", "<leader>os", "<cmd>Obsidian search<cr>", { desc = "Obsidian search" })
-map("n", "<leader>od", "<cmd>Obsidian today<cr>", { desc = "Open today's Obsidian daily note" })
-map("n", "<leader>oy", "<cmd>Obsidian yesterday<cr>", { desc = "Open today's Obsidian daily note" })
+map("n", "<leader>od", "<cmd>Obsidian dailies<cr>", { desc = "Open Obsidian daily notes" })
 map("n", "<leader>on", "<cmd>Obsidian new<cr>", { desc = "Create a new Obsidian note" })
 map("n", "<leader>ob", "<cmd>Obsidian backlinks<cr>", { desc = "Show Obsidian backlinks" })
 map("n", "<leader>ol", "<cmd>Obsidian link<cr>", { desc = "Link selected text in Obsidian" })
