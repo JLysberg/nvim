@@ -76,6 +76,9 @@ map(
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("n", "<leader>Y", '"+Y', { desc = "Yank line to clipboard" })
 map("n", "<leader>yf", '<cmd> call setreg("+",@%) <cr>', { desc = "Yank file name to clipboard" })
+map("n", "<leader>yF", function()
+  vim.fn.setreg("+", string.format("%s:%d", vim.fn.expand "%", vim.fn.line "."))
+end, { desc = "Yank file name and line to clipboard" })
 map("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 -- window
