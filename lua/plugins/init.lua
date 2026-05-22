@@ -34,7 +34,22 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = require "configs.cmp",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, require "configs.cmp")
+    end,
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    opts = function(_, opts)
+      opts.enable_autosnippets = true
+      return opts
+    end,
+    config = function(_, opts)
+      require("luasnip").config.set_config(opts)
+      require "nvchad.configs.luasnip"
+      require "configs.luasnip"
+    end,
   },
 
   {
