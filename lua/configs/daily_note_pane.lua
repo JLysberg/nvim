@@ -1,10 +1,26 @@
 local M = {}
 local state = { buf = nil }
 
+local function save_buf(buf)
+  if
+    buf
+    and vim.api.nvim_buf_is_valid(buf)
+    and vim.api.nvim_buf_is_loaded(buf)
+    and vim.api.nvim_buf_get_name(buf) ~= ""
+    and vim.bo[buf].modifiable
+    and vim.bo[buf].modified
+  then
+    vim.api.nvim_buf_call(buf, function()
+      vim.cmd "silent noautocmd write"
+    end)
+  end
+end
+
 function M.toggle()
   local visible_win = state.buf and vim.fn.win_findbuf(state.buf)[1]
 
   if visible_win and vim.api.nvim_win_is_valid(visible_win) then
+    save_buf(state.buf)
     vim.api.nvim_win_close(visible_win, true)
     return
   end
@@ -40,6 +56,14 @@ function M.toggle()
 
   vim.bo[state.buf].bufhidden = "hide"
   vim.bo[state.buf].buflisted = false
+
+  vim.api.nvim_create_autocmd("BufWinLeave", {
+    buffer = state.buf,
+    group = vim.api.nvim_create_augroup("DailyNotePaneSave", { clear = true }),
+    callback = function(args)
+      save_buf(args.buf)
+    end,
+  })
 end
 
 return M

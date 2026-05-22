@@ -43,7 +43,7 @@ local opts = {
   },
   open_notes_in = "current",
   checkbox = {
-    order = { " ", "x", ">", "~" },
+    order = { " ", ">", "x", "~" },
   },
   footer = {
     enabled = false,
