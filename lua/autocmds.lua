@@ -1,4 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+local vimade_theme_reload = augroup("UserVimadeThemeReload", { clear = true })
 
 -- highlight on yank
 autocmd("TextYankPost", {
@@ -46,5 +49,17 @@ autocmd("TermOpen", {
 
     -- start in insert mode on open
     vim.cmd "startinsert"
+  end,
+})
+
+-- redraw Vimade highlights after NvChad theme previews reload Base46
+autocmd("User", {
+  group = vimade_theme_reload,
+  pattern = "NvThemeReload",
+  callback = function()
+    local ok, vimade = pcall(require, "vimade")
+    if ok then
+      vimade.redraw()
+    end
   end,
 })
